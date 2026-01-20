@@ -1,0 +1,10 @@
+# pgbench (opcional) — medición “clásica” TPS
+# Útil si quieres separar completamente el workload sintético del caso EAFITShop.
+#
+# 1) Desde un cliente con conectividad a RDS:
+#   pgbench -h <endpoint> -U <user> -d <db> -i
+#
+# 2) Ejecutar 5 min con 10 clientes / 4 hilos:
+#   pgbench -h <endpoint> -U <user> -d <db> -c 10 -j 4 -T 300
+#
+# 3) Repetir después de agregar índices para mostrar impacto en escritura/locks.
