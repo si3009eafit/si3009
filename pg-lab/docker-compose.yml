@@ -17,9 +17,9 @@ services:
 
     volumes:
       - pg_data:/var/lib/postgresql/data
+      - pg_logs:/var/log/postgresql
       - ./init:/docker-entrypoint-initdb.d:ro
       - ./postgresql.conf:/etc/postgresql/postgresql.conf:ro
-      - ./logs:/var/log/postgresql
 
     command:
       - postgres
@@ -73,5 +73,7 @@ services:
 
 volumes:
   pg_data:
+  pg_logs:
   pgadmin_data:
   cloudbeaver_data:
+
