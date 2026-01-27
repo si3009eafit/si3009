@@ -18,7 +18,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
       - pg_logs:/var/log/postgresql
-      - ./init:/docker-entrypoint-initdb.d:ro
+      - ./scripts:/docker-entrypoint-initdb.d:ro
       - ./postgresql.conf:/etc/postgresql/postgresql.conf:ro
 
     command:

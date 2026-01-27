@@ -2,7 +2,6 @@
 -- EAFIT - Bases de Datos Avanzadas: Unidad de Optimización (PostgreSQL)
 -- Esquema OLTP estilo e-commerce: diseñado para generar cuellos de botella si NO se crean índices.
 
--- Limpieza (útil si ejecutas manualmente en un entorno ya existente)
 DO $$
 BEGIN
   IF EXISTS (SELECT 1 FROM pg_type WHERE typname = 'order_status') THEN
@@ -59,8 +58,3 @@ CREATE TABLE payment (
   payment_status TEXT NOT NULL
 );
 
--- Comentario pedagógico:
--- A propósito NO se crean índices secundarios aquí (ni en FKs) para que el laboratorio muestre:
--- 1) Seq Scan / Hash Join en tablas grandes
--- 2) Efecto de índices compuestos
--- 3) Cost-based optimization y rol de estadísticas (ANALYZE)

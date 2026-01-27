@@ -1,8 +1,8 @@
 -- 05_optimizations.sql
 -- Secuencia recomendada de optimización para mostrar mejoras progresivas.
--- Ejecuta de forma incremental y vuelve a ejecutar 04_bad_queries.sql después de cada "bloque".
+-- Ejecuta de forma incremental y vuelve a ejecutar 04_base_queries.sql después de cada "bloque".
 
--- 0) Asegurar estadísticas al día
+-- 0) Asegurar estadísticas actualizadas
 ANALYZE;
 
 -- 1) Índices mínimos para FKs y filtros comunes (impacto fuerte en joins)

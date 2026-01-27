@@ -1,4 +1,4 @@
--- 04_bad_queries.sql
+-- 04_base_queries.sql
 -- Consultas "base" deliberadamente ineficientes para el laboratorio.
 -- Instrucción: ejecuta cada una con EXPLAIN (ANALYZE, BUFFERS) y registra:
 -- - Plan

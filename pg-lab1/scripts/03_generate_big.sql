@@ -1,16 +1,16 @@
--- 03_seed_big.sql
+-- 03_generate_big.sql
 -- Dataset "grande" (millones): puede tomar tiempo. Ajusta volúmenes según hardware.
 -- Si lo ejecutas en Docker local: considera aumentar shared_buffers, maintenance_work_mem, etc.
--- Para cargas MUY grandes, es mejor usar COPY desde CSV, pero este script es 100% SQL para fines didácticos.
+-- Para cargas MUY grandes, es mejor usar COPY desde CSV, pero este script es 100% SQL.
 
--- Volúmenes (sugeridos; edita a conveniencia):
+-- Cantidades:
 -- Customers: 1,000,000
 -- Products: 100,000
 -- Orders: 5,000,000
 -- OrderItems: 20,000,000 (4 por orden)
 -- Payments: 4,000,000 (80% de órdenes)
 
--- IMPORTANTE: si tu equipo no aguanta, baja los números (por ejemplo 200k/20k/1M/4M/800k).
+-- IMPORTANTE: ajusta de acuerdo a tu hw y tamaño del disco duro
 
 -- Customers
 INSERT INTO customer (customer_id, name, email, city, created_at)

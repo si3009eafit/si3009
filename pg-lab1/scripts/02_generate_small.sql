@@ -1,9 +1,9 @@
--- 02_seed_small.sql
--- Dataset "pequeño" (rápido): útil para validar pipeline y consultas antes de ir a millones.
+-- 02_generate_small.sql
+-- Dataset "pequeño" (rápido): útil para validar pipeline y consultas antes de ir a big data.
 
 -- Recomendación: ejecuta en pgAdmin/CloudBeaver y luego ANALYZE.
 
--- Parámetros (ajusta si quieres)
+-- Parámetros
 -- Customers: 50k
 -- Products: 10k
 -- Orders: 200k
