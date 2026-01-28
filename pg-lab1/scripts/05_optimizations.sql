@@ -2,6 +2,10 @@
 -- Secuencia recomendada de optimización para mostrar mejoras progresivas.
 -- Ejecuta de forma incremental y vuelve a ejecutar 04_base_queries.sql después de cada "bloque".
 
+SELECT indexname, indexdef
+FROM pg_indexes
+WHERE tablename = 'orders';
+
 -- 0) Asegurar estadísticas actualizadas
 ANALYZE;
 
@@ -15,6 +19,18 @@ ANALYZE;
 
 -- 2) Índice por rango temporal (consulta Q1)
 CREATE INDEX IF NOT EXISTS idx_orders_order_date ON orders(order_date);
+
+-- o pruebe esta alternativa:
+
+CREATE INDEX IF NOT EXISTS idx_orders_order_date_customer ON orders (order_date, customer_id)
+INCLUDE (total_amount);
+
+-- o
+
+CREATE INDEX IF NOT EXISTS idx_orders_order_date_customer ON orders (order_date)
+INCLUDE (total_amount);
+
+
 
 ANALYZE;
 
