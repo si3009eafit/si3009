@@ -1,0 +1,5 @@
+Ejecutar (FULL)
+python generate_fintechpay_csv.py --out ./out --users 2000000 --tx 30000000 --audit 120000000
+
+Ejecutar (modo clase / examen rápido)
+python generate_fintechpay_csv.py --out ./out --users 200000 --tx 3000000 --audit 12000000

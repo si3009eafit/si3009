@@ -1,0 +1,29 @@
+en SQL:
+
+-- 01_load_tuning.sql (sesión)
+SET synchronous_commit = off;
+SET maintenance_work_mem = '1GB';
+SET work_mem = '64MB';
+-- Opcional si estás en un entorno controlado y entiendes el riesgo:
+-- SET fsync = off;          -- NO recomendado fuera de laboratorio
+-- SET full_page_writes = off; -- NO recomendado fuera de laboratorio
+
+\copy users(user_id,email,country,created_at) FROM './out/users.csv' WITH (FORMAT csv);
+\copy transactions(tx_id,user_id,amount,status,tx_date) FROM './out/transactions.csv' WITH (FORMAT csv);
+\copy audit_log(id,tx_id,event,created_at) FROM './out/audit_log.csv' WITH (FORMAT csv);
+
+\copy (con backslash) corre en tu máquina cliente y lee archivos locales.
+COPY (sin backslash) exige que el archivo esté en el servidor.
+
+
+5) Después de cargar: ANALYZE (clave para que el optimizador “vea” bien)
+
+ANALYZE users;
+ANALYZE transactions;
+ANALYZE audit_log;
+
+6) Tips prácticos (para que no se “muera” el equipo)
+Disco SSD es crítico
+120M filas en audit_log requiere mucho espacio (y tiempo).
+Para exámenes, usa el modo “clase” (12M) y conserva el comportamiento.
+Si quieres que el particionamiento “se vea” mejor: genera fechas con más densidad reciente (skew temporal). Te lo puedo ajustar.
